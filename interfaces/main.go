@@ -1,0 +1,35 @@
+package main
+
+import "fmt"
+
+type englishBot struct{}
+
+type spanishBot struct{}
+
+type bot interface {
+	getGreeting() string
+}
+
+func main() {
+	eb := englishBot{}
+	sb := spanishBot{}
+
+	printGreeting(eb)
+	printGreeting(sb)
+}
+
+func printGreeting(b bot) {
+	fmt.Println(b.getGreeting())
+}
+
+func (eb englishBot) getGreeting() string {
+	return "Hi There!"
+}
+
+func (sb spanishBot) getGreeting() string {
+	return "Hola!"
+}
+
+// interfaces are not generic types
+// interfaces are implicit
+// interfaces are a contract to help us manage types
